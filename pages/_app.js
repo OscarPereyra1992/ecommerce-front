@@ -1,21 +1,30 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle, ThemeProvider, StyleSheetManager } from "styled-components";
+
+// Definir el objeto de tema personalizado
+const theme = {
+  colors: {
+    primary: "#FF0000",
+    secondary: "#00FF00",
+  },
+};
 
 const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
- body{
+body{
   padding: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
  }
 `;
 
-export default function App({ Component, pageProps }) {
-  return(
-    <>
-      <GlobalStyles />
-      <Component {...pageProps} />
 
-    </>
-    );
+export default function App({ Component, pageProps }) {
+  return (
+    <StyleSheetManager shouldForwardProp={(prop) => prop !== "outlined"}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </StyleSheetManager>
+  );
 }
-    
+
