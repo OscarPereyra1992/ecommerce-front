@@ -1,3 +1,4 @@
+import { primary } from "@/lib/Colors";
 import { css, styled } from "styled-components";
 
     export const ButtonStyle = css`
@@ -6,10 +7,12 @@ import { css, styled } from "styled-components";
     padding: 5px 15px;
     cursor: pointer;
     text-decoration: none;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
     svg{
         height: 16px;
         margin-right: 5px;
-    }
+    }   
 
     ${props => props.skyblue && !props.outlined && css`
         background-color: #fff;
@@ -24,10 +27,39 @@ import { css, styled } from "styled-components";
     `}
     
     
-    ${props => props.primary && css`
+    ${props => props.primary && props.outlined && css`
+        background-color: transparent;
+        border: 2px solid ${primary};
+        color: ${primary};
+    `}
+
+    ${props => props.primary && !props.outlined && css`
+        background-color: transparent;
+        border: 2px solid ${primary};
+        color:${primary};
+    `}
+
+    ${props => props.black && props.outlined && css`
+        background-color: transparent;
+        color:#fff;
+        border: 1px solid #000;
+    `}
+
+
+    ${props => props.black && !props.outlined && css`
+        background-color: #000;
+        color:#fff;
+    `}
+
+    ${props => props.block && css`
+        display: block;
+        width: 100%;
+    `}
+
+    ${props => props.secundary && css`
         background-color: transparent;
         border: 2px solid #FFBDF7;
-        color: #FFBDF7;
+        color: #000;
     `}
     
     ${props => props.size === 'l' && css`
