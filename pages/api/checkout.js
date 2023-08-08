@@ -46,7 +46,7 @@ export default async function handler(req, res) {
     success_url: process.env.PUBLIC_URL + '/cart?success=1',
     cancel_url: process.env.PUBLIC_URL + '/cart?cancel=1',
     metadata: {
-        orderId: orderDoc._id.toString()
+        orderId: orderDoc._id.toString(), test: 'ok',
     },
 
   });
